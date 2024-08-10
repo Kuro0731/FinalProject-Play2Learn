@@ -1,3 +1,20 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Review
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    model = Review
+
+    # List Attributes
+    date_hierarchy = 'updated'
+    list_display = ['title', 'review', 'created', 'updated']
+
+    # Form Attributes
+    autocomplete_fields = ['user']
+
+    def get_readonly_fields(self, request, obj=None):
+        if obj: # editing an existing object
+            return ('created', 'updated')
+
+        return ()

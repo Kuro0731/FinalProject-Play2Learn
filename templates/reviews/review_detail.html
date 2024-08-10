@@ -1,0 +1,26 @@
+{% extends "_base_vue.html" %}
+
+{% block title %}Review{% endblock %}
+{% block main %}
+  <div class="card border-primary m-auto mb-3 text-center"
+    style="max-width: 30rem">
+    <div class="card-header">{{ review.title }}</div>
+    <div class="card-body text-primary">
+      <h5 class="card-title">{{ review.review }}</h5>
+    </div>
+    <div class="card-footer">
+      <div class="border-bottom border-faded m-2 pb-2">
+        {% if review.user == user %}
+          <a href="{% url 'reviews:update' review.slug %}"
+            class="btn btn-info btn-sm me-2">Update</a>
+          <a href="{% url 'reviews:delete' review.slug %}"
+            class="btn btn-danger btn-sm me-2">Delete</a>
+        {% endif %}
+      </div>
+      <small class="text-muted">
+        Created on: {{ review.created }} by {{ review.user.username }}<br>
+        Last updated: {{ review.updated }}
+      </small>
+    </div>
+  </div>
+{% endblock %}

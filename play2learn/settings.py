@@ -24,16 +24,25 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
+    "django.contrib.sites",
     "django.contrib.staticfiles",
+
+    # Third-party
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
 
     # local apps
     "common.apps.CommonConfig",
     "games.apps.GamesConfig",
     "pages.apps.PagesConfig",
+    "reviews.apps.ReviewsConfig",
     "users.apps.UsersConfig",
 
     "userscores.apps.UserscoresConfig",
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -41,6 +50,7 @@ MIDDLEWARE = [
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
+    'allauth.account.middleware.AccountMiddleware',
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
@@ -74,6 +84,14 @@ DATABASES = {
         "PORT": 5432
     }
 }
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, even w/o `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+
+    # `allauth`-specific auth methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

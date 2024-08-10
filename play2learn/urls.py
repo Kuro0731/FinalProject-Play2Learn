@@ -21,6 +21,6 @@ from pages.views import HomePageView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('', HomePageView.as_view()),
-    path('', include("games.urls"))
+    path('', include("games.urls")),
+    path('', include('pages.urls'))
 ]

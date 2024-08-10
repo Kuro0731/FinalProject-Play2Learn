@@ -1,0 +1,11 @@
+{% extends "_base_vue.html" %}
+
+{% block title %}User Scores{% endblock %} 
+{% block main %}
+    <h2> User Scores</h2>
+    <ul class="list-group list-group-flush mb-3">
+        {% for userscore in userscore_list %}
+            <li class="list-group-item">{{ userscore.score }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

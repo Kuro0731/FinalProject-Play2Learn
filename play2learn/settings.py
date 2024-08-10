@@ -31,7 +31,7 @@ INSTALLED_APPS = [
     "pages.apps.PagesConfig",
     "users.apps.UsersConfig",
 
- "userscores.apps.UserscoresConfig",
+    "userscores.apps.UserscoresConfig",
 ]
 
 MIDDLEWARE = [

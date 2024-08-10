@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     "games.apps.GamesConfig",
     "pages.apps.PagesConfig",
     "users.apps.UsersConfig",
-    
+
  "userscores.apps.UserscoresConfig",
 ]
 
@@ -66,7 +66,7 @@ WSGI_APPLICATION = "play2learn.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "play2learn",
+        "NAME": "userscores",
         "USER": "postgres",
         "PASSWORD": "Joey0731",
         "HOST": "localhost",

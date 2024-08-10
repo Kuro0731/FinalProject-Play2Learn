@@ -22,7 +22,7 @@ from pages.views import HomePageView
 urlpatterns = [
     path("admin/doc/", include("django.contrib.admindocs.urls")),
     path("admin/", admin.site.urls),
-    path("userscores/", include("userscores.rls")),
+    path("userscores/", include("userscores.urls")),
     path('', include("games.urls")),
     path('', include("pages.urls"))
 ]

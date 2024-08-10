@@ -5,7 +5,9 @@
     <h2> User Scores</h2>
     <ul class="list-group list-group-flush mb-3">
         {% for userscore in userscore_list %}
-            <li class="list-group-item">{{ userscore.score }}</li>
-        {% endfor %}
+            <li class="list-group-item">
+                <a href="{{ userscore.get_absolute_url }}">{{ userscore.score }}</a>
+         </li>
+         {% endfor %}
     </ul>
 {% endblock %}

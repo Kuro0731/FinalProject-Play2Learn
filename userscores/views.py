@@ -1,9 +1,6 @@
-from django.views.generic import DetailView, ListView
+from django.views.generic import ListView
 
 from .models import Userscore
-
-class UserscoreDetailView(DetailView):
-    model = Userscore
 
 class UserscoreListView(ListView):
     model = Userscore

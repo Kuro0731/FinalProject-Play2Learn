@@ -12,8 +12,25 @@
 </head>
 <body>
   <header>
-    <a href="{% url 'pages:homepage' %}">Home</a> |
-    <a href="{% url 'pages:contact-us' %}">Contact Us</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="{% url 'pages:homepage' %}">Play2Learn-Final</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+        data-target="#navbarSupportedContent" aria-expanded="false"
+        aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'pages:homepage' %}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'pages:contact-us' %}">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
   </header>
   <main>
   {% block main %}{% endblock %}

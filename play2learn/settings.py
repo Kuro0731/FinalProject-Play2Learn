@@ -27,6 +27,7 @@ INSTALLED_APPS = [
 
     # local apps
     "games.apps.GamesConfig",
+    "pages.apps.PagesConfig",
     'users.apps.UsersConfig',
 ]
 

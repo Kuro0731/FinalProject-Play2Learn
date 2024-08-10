@@ -1,6 +1,4 @@
-{% extends "_base_vue.html" %}
-{% load crispy_forms_tags %}
-
+{{% extends "_base_vue.html" %}
 {% block title %}Reviews{% endblock %}
 {% block main %}
 <div class="row">
@@ -52,28 +50,21 @@
     </thead>
     <tbody>
       {% for review in review_list %}
+      {% if review.user == user %}
       <tr>
         <td>
           <a href="{{ review.get_absolute_url }}">{{ review.review }}</a>
         </td>
         <td>
-          {% if review.user == user %}
-          <a href="{% url 'reviews:update' joke.slug %}">
+          <a href="{% url 'reviews:update' review.slug %}">
             <i class="fas fa-pencil-alt"></i>
           </a>
-          <a href="{% url 'reviews:delete' joke.slug %}">
+          <a href="{% url 'reviews:delete' review.slug %}">
             <i class="far fa-trash-alt"></i>
           </a>
-          {% else %}
-          <small>
-            by
-			<a href="{% url 'reviews:creator' review.user.username %}?order={{ order }}&direction={{ direction }}">
-              {{ review.user.username }}
-            </a>
-          </small>
-          {% endif %}
         </td>
       </tr>
+      {% endif %}
       {% endfor %}
     </tbody>
   </table>

@@ -8,13 +8,14 @@ class ReviewAdmin(admin.ModelAdmin):
 
     # List Attributes
     date_hierarchy = 'updated'
-    list_display = ['title', 'review', 'created', 'updated']
+    list_display = ['title', 'review', 'created', 'updated', 'user']
+    ordering = ['-updated']
 
-    # Form Attributes
+     # Form Attributes
     autocomplete_fields = ['user']
 
     def get_readonly_fields(self, request, obj=None):
         if obj: # editing an existing object
-            return ('created', 'updated')
+            return ('slug', 'created', 'updated')
 
         return ()

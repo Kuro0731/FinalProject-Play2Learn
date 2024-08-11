@@ -100,21 +100,28 @@
         <button @click="play" class="btn btn-primary w-100 m-1">Play Again</button>
         <button @click="screen = 'start'" class="btn btn-secondary w-100 m-1">Back to Start Screen</button>
       </div>
+      <div class="mt-4">
+        <div class="text-center">
+          <p><em>Record your score to track your progress!</em></p>
+          <label for="user-name">Username</label>
+          <input name="user-name" id="user-name" v-model="userName" />
+        </div>
+        <div class="row text-center">
+          <button @click="recordScore" class="btn btn-primary w-100 m-1">Record Score</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
-
 <style scoped>
   div, label {
     padding: 0.2rem;
   }
 </style>
-
 <script>
 import { getRandomInteger } from '@/helpers/helpers';
-
 export default {
-  name: 'MathGame',
+  name: 'MathFacts',
   data() {
     return {
       score: 0,
@@ -161,6 +168,14 @@ export default {
     async recordScore() {
       // TODO: when Math Facts finishes, make an Ajax call with axios (this.axios)
       // to record the score on the backend
+      const data = {
+        "user-name": this.userName,
+        "score": this.score,
+        "settings": [this.operation, this.maxNumber],
+        "game": "MATH"
+      };
+      const response = (await this.axios.post("/record-score/", data)).data;
+      console.log(response);
     }
   },
   computed: {
@@ -168,24 +183,19 @@ export default {
       if (this.userInput.trim() == "") {
         return false;
       }
-
       const input = parseInt(this.userInput);
       if (this.operation == "+") {
         return input === this.number1 + this.number2;
       }
-
       if (this.operation == "-") {
         return input === this.number1 - this.number2;
       }
-
       if (this.operation == "x") {
         return input === this.number1 * this.number2;
       }
-
       if (this.operation == "/") {
         return input === this.number1 / this.number2;
       }
-
       return false;
     },
   },

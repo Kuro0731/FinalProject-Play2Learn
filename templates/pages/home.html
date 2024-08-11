@@ -1,10 +1,25 @@
 {% extends "_base.html" %}
-{% load common_tags %}
 
 {% block title %}Home{% endblock %}
 {% block main %}
-<h2 class="text-center">Welcome!</h2>
-<p class="text-center">Ready to to play some games?</p>
-  {% random_review %}
-  
+  <h2 class="text-center">Welcome!</h2>
+  <p class="text-center">Ready to to play some games?</p>
+  {% if reviews %}
+  <div id="reviewCarousel" class="carousel slide-dark carousel-fade text-center" data-bs-ride="carousel" data-interval="10000">
+    <div class="carousel-inner w-100">
+      {% for review in reviews %}
+      <div class="carousel-item {% if forloop.first %} active {% endif %}">
+        <div class="card border-primary m-auto mb-3 text-center"
+          style="max-width: 30rem">
+          <div class="card-header">{{ review.user }}</div>
+          <div class="card-body">
+            <h5 class="card-title">{{ review.title }}</h5>
+            <p class="card-text">{{ review.review }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
 {% endblock %}

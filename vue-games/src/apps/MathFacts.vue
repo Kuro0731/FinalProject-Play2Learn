@@ -102,7 +102,7 @@
       </div>
       <div class="mt-4">
         <div class="text-center">
-          <p><em>Record your score to track your progress!</em></p>
+          <p><em>Enter your username to keep track of your scores!</em></p>
           <label for="user-name">Username</label>
           <input name="user-name" id="user-name" v-model="userName" />
         </div>
@@ -175,7 +175,8 @@ export default {
         "game": "MATH"
       };
       const response = (await this.axios.post("/record-score/", data)).data;
-      console.log(response);
+      this.screen = "start";
+      return response;
     }
   },
   computed: {

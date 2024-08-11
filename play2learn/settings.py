@@ -94,7 +94,7 @@ WSGI_APPLICATION = "play2learn.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "userscores",
+        "NAME": "play2learn",
         "USER": "postgres",
         "PASSWORD": "Joey0731",
         "HOST": "localhost",

@@ -16,20 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from pages.views import HomePageView
 
 urlpatterns = [
     # Admin
     path("admin/doc/", include("django.contrib.admindocs.urls")),
     path("admin/", admin.site.urls),
-
-     # User Management
+    # User Management
     path("account/", include("users.urls")),
     path("account/", include("allauth.urls")),
-
     # Local Apps
+    path("contact/", include("contact.urls")),
     path("userscores/", include("userscores.urls")),
     path("", include("games.urls")),
     path("", include("pages.urls")),
-    path("reviews/", include("reviews.urls"))
+    path("reviews/", include("reviews.urls")),
 ]

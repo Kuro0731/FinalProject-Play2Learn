@@ -36,6 +36,7 @@ INSTALLED_APPS = [
 
     # local apps
     "common.apps.CommonConfig",
+    "contact.apps.ContactConfig",
     "games.apps.GamesConfig",
     "pages.apps.PagesConfig",
     "reviews.apps.ReviewsConfig",
@@ -119,18 +120,22 @@ AUTH_PASSWORD_VALIDATORS = [
 # AUTHENTICATION SETTINGS
 AUTH_USER_MODEL = "users.CustomUser"
 LOGIN_URL = "account_login"
-LOGIN_REDIRECT = "pages:homepage"
+LOGIN_REDIRECT_URL = "pages:homepage"
 
 ## django-allauth settings
 ACCOUNT_AUTHENTICATION_METHOD = 'email' # Default: 'username'
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1 # Default: 3
 ACCOUNT_EMAIL_REQUIRED = True # Default: False
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory' # Default: 'optional'
-ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5 # Default: 5
-ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300 # Default 300
 ACCOUNT_LOGOUT_REDIRECT_URL ='account_login' # Default: '/'
 ACCOUNT_USERNAME_REQUIRED = False # Default: True
 ACCOUNT_SIGNUP_FORM_CLASS = 'users.forms.SignupForm'
+
+ACCOUNT_RATE_LIMITS = {
+    # Change 'login_failed' to adjust the rate limit for failed login attempts
+    "login_failed": "5/300s",  # 5 attempts per 300 seconds (5 minutes)
+    # You can add other rate limits here if needed
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

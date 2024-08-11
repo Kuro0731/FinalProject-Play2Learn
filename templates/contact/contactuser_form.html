@@ -1,0 +1,17 @@
+{% extends "_base_vue.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Contact Us{% endblock %}
+{% block main %}
+  <h2 class="text-center">Contact Us</h2>
+  <div class="card border-primary m-auto mb-3 p-3" style="max-width: 30rem">
+    <form method="post" novalidate enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.first_name|as_crispy_field }}
+      {{ form.last_name|as_crispy_field }}
+      {{ form.email|as_crispy_field }}
+      {{ form.subject|as_crispy_field }}
+      {{ form.message|as_crispy_field }}
+      <button class="form-control btn btn-primary">Submit</button>
+    </form>
+  </div>
+{% endblock %}

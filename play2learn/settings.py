@@ -6,6 +6,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
+import os
 from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -133,3 +134,18 @@ STATICFILES_DIRS = [
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# SendGrid Email Settings
+SENDGRID_API_KEY = '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'
+
+# Optional settings
+SENDGRID_SANDBOX_MODE_IN_DEBUG = False  # Set to True to prevent sending emails in debug mode
+SENDGRID_ECHO_TO_STDOUT = True  # Set to True to echo email contents to the console in debug mode
+
+# Default email address used for various automated correspondence from the site
+DEFAULT_FROM_EMAIL = 'your-email@example.com'
+
+# Conditional import of local settings
+if os.environ.get('ENVIRONMENT') != 'production':
+    from .local_settings import *
+# DON'T PUT ANYTHING BELOW THIS

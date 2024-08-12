@@ -145,6 +145,11 @@ SENDGRID_ECHO_TO_STDOUT = True  # Set to True to echo email contents to the cons
 # Default email address used for various automated correspondence from the site
 DEFAULT_FROM_EMAIL = 'your-email@example.com'
 
+try:
+    from .local_settings import *
+except ImportError:
+    pass
+
 # Conditional import of local settings
 if os.environ.get('ENVIRONMENT') != 'production':
     from .local_settings import *

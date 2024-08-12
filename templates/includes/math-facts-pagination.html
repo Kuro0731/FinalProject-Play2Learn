@@ -1,0 +1,36 @@
+<nav aria-label="pagination">
+	<ul class="pagination justify-content-center">
+		{% if math_obj.has_previous %}
+			<li class="page-item">
+				<a class="page-link" href="?math_page=1">&laquo; 1…</a>
+			</li>
+			{% if math_obj.previous_page_number != 1 %}
+				<li class="page-item">
+					<a class="page-link" 
+						href="?math_page={{ math_obj.previous_page_number }}">
+						{{ math_obj.previous_page_number }}
+					</a>
+				</li>
+			{% endif %}
+		{% endif %}
+		<li class="page-item active">
+			<span class="page-link">
+				{{ math_obj.number }}
+			</span>
+		</li>
+		{% if math_obj.has_next %}
+			{% if math_obj.next_page_number != math_obj.paginator.num_pages %}
+				<li class="page-item">
+					<a class="page-link" href="?math_page={{ math_obj.next_page_number }}">
+						{{ math_obj.next_page_number }}
+					</a>
+				</li>
+			{% endif %}
+			<li class="page-item">
+				<a class="page-link" href="?math_page={{ math_obj.paginator.num_pages }}">
+					…{{ math_obj.paginator.num_pages }} &raquo;
+				</a>
+			</li>
+		{% endif %}
+	</ul>
+</nav>

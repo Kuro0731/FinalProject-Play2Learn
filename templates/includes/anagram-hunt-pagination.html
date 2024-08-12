@@ -1,0 +1,36 @@
+<nav aria-label="pagination">
+	<ul class="pagination justify-content-center">
+		{% if anagram_obj.has_previous %}
+			<li class="page-item">
+				<a class="page-link" href="?anagram_page=1">&laquo; 1…</a>
+			</li>
+			{% if anagram_obj.previous_page_number != 1 %}
+				<li class="page-item">
+					<a class="page-link" 
+						href="?anagram_page={{ anagram_obj.previous_page_number }}">
+						{{ anagram_obj.previous_page_number }}
+					</a>
+				</li>
+			{% endif %}
+		{% endif %}
+		<li class="page-item active">
+			<span class="page-link">
+				{{ anagram_obj.number }}
+			</span>
+		</li>
+		{% if anagram_obj.has_next %}
+			{% if anagram_obj.next_page_number != anagram_obj.paginator.num_pages %}
+				<li class="page-item">
+					<a class="page-link" href="?anagram_page={{ anagram_obj.next_page_number }}">
+						{{ anagram_obj.next_page_number }}
+					</a>
+				</li>
+			{% endif %}
+			<li class="page-item">
+				<a class="page-link" href="?anagram_page={{ anagram_obj.paginator.num_pages }}">
+					…{{ anagram_obj.paginator.num_pages }} &raquo;
+				</a>
+			</li>
+		{% endif %}
+	</ul>
+</nav>

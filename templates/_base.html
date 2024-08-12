@@ -30,20 +30,14 @@
           <li class="nav-item active">
             <a class="nav-link" href="{% url 'pages:homepage' %}">Home</a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarGameDropdown"
-            roll="button" data-bs-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">Games</a>
-            <div class="dropdown-menu" aria-labelledby="navbarGameDropdown">
-              <a class="dropdown-item" href="{% url 'games:anagram-hunt' %}">Anagram Hunt</a>
-              <a class="dropdown-item" href="{% url 'games:math-facts' %}">Math Facts</a>
-            </div>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'games:anagram-hunt' %}">Anagram Hunt</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'games:game-scores' %}">Game Scores</a>
+            <a class="nav-link" href="{% url 'games:math-facts' %}">Math Facts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Leaderboards</a>
+            <a class="nav-link" href="{% url 'games:leader-boards' %}">Leader Boards</a>
           </li>
           {% if not user.is_authenticated %}
           <li class="nav-item">
@@ -61,6 +55,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="{% url 'my-account' %}">My Account</a>
+              <a class="dropdown-item" href="{% url 'games:game-scores' %}">My Game Scores</a>
               <a class="dropdown-item" 
               href="{% url 'reviews:creator' user.username %}?order={{ order }}&direction={{ direction }}">
               My Reviews</a>

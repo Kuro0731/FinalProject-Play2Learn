@@ -135,9 +135,6 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# SendGrid Email Settings
-SENDGRID_API_KEY = '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'
-
 # Optional settings
 SENDGRID_SANDBOX_MODE_IN_DEBUG = False  # Set to True to prevent sending emails in debug mode
 SENDGRID_ECHO_TO_STDOUT = True  # Set to True to echo email contents to the console in debug mode

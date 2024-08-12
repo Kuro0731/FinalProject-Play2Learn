@@ -1,8 +1,6 @@
 {% extends "_base.html" %}
 {% load crispy_forms_tags %}
-
 {% block title %}Log in{% endblock %}
-
 {% block main %}
 <div class="card border-primary m-auto mb-3" style="max-width: 30rem">
   <div class="card-header text-center">Log in</div>
@@ -16,7 +14,7 @@
   <div class="card-footer">
     <p>
       Need an account?
-      <a href="{% url 'account_signup' %}">Register</a>.<br>
+      <a href="{% url 'account_signup' %}">Sign Up</a>.<br>
       Lost your password?
       <a href="{% url 'account_reset_password' %}">Reset it</a>.
     </p>

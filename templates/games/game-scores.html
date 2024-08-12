@@ -1,8 +1,8 @@
 {% extends "_base.html" %}
 
-{% block title %}Game Scores{% endblock %}
+{% block title %}My Game Scores{% endblock %}
 {% block main %}
-<h1 class="text-center">Game Scores</h1>
+<h1 class="text-center">My Game Scores</h1>
 <div class="row">
 	<div class="col-12 col-md-2 col-lg-3">
 		<h2>Math Facts</h2>
@@ -13,19 +13,25 @@
 	  <thead>
 		<tr>
 		  <th>Score</th>
-		  <th>Operation | Max Number</th>
+		  <th>Operation</th>
+		  <th>Max Number</th>
 		  <th>Username</th>
 		  <th>Date</th>
 		</tr>
 	  </thead>
 	  <tbody>
 			{% for score in math_scores %}
+			{% if score.user_name == user.username %}
 			<tr>
 				<td>
 					{{ score.score }}
 				</td>
 				<td>
-					{{ score.settings }}
+					{{ score.get_setting_values.0 }}
+				</td>
+				<td>
+					{{ score.get_setting_values.1 }}
+				</td>
 				<td>
 					{{ score.user_name }}
 				</td>
@@ -33,6 +39,7 @@
 					{{ score.created}}
 				</td>
 			</tr>
+			{% endif %}
 			{% endfor %}
 	  </tbody>
 	</table>
@@ -54,6 +61,7 @@
 		</thead>
 		<tbody>
 			{% for score in anagram_scores %}
+			{% if score.user_name == user.username %}
 			<tr>
 				<td>
 					{{ score.score }}
@@ -67,6 +75,7 @@
 					{{ score.created}}
 				</td>
 			</tr>
+			{% endif %}
 			{% endfor %}
 		</tbody>
 	</table>

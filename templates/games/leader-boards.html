@@ -1,8 +1,7 @@
 {% extends "_base.html" %}
-
-{% block title %}Game Scores{% endblock %}
+{% block title %}Leader Boards{% endblock %}
 {% block main %}
-<h1 class="text-center">Game Scores</h1>
+<h1 class="text-center">Leader Boards</h1>
 <div class="row">
 	<div class="col-12 col-md-2 col-lg-3">
 		<h2>Math Facts</h2>
@@ -13,7 +12,8 @@
 	  <thead>
 		<tr>
 		  <th>Score</th>
-		  <th>Operation | Max Number</th>
+		  <th>Operation</th>
+		  <th>Max Number</th>
 		  <th>Username</th>
 		  <th>Date</th>
 		</tr>
@@ -25,7 +25,11 @@
 					{{ score.score }}
 				</td>
 				<td>
-					{{ score.settings }}
+					{{ score.get_setting_values.0 }}
+				</td>
+				<td>
+					{{ score.get_setting_values.1 }}
+				</td>
 				<td>
 					{{ score.user_name }}
 				</td>
@@ -37,7 +41,6 @@
 	  </tbody>
 	</table>
 </div>
-
 <div class="row">
 	<div class="col-12 col-md-2 col-lg-3">
 		<h2>Anagram Hunt</h2>
@@ -61,6 +64,7 @@
 				</td>
 				<td>
 					{{ score.settings }}
+				</td>
 				<td>
 					{{ score.user_name }}
 				</td>

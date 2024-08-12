@@ -3,6 +3,8 @@ from django.db import models
 from django.urls import reverse
 
 class CustomUser(AbstractUser):
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
     dob = models.DateField(
         verbose_name="Date of Birth", null=True, blank=True
     )

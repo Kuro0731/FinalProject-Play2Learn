@@ -16,7 +16,6 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
 urlpatterns = [
     # Admin
     path("admin/doc/", include("django.contrib.admindocs.urls")),
@@ -24,6 +23,7 @@ urlpatterns = [
     # User Management
     path("account/", include("users.urls")),
     path("account/", include("allauth.urls")),
+
     # Local Apps
     path("contact/", include("contact.urls")),
     path("", include("games.urls")),

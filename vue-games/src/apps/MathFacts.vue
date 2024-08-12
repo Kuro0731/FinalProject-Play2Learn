@@ -160,8 +160,6 @@ export default {
       }
     },
     async recordScore() {
-      // TODO: when Math Facts finishes, make an Ajax call with axios (this.axios)
-      // to record the score on the backend
       const data = {
         "score": this.score,
         "settings": `${this.operation},${this.maxNumber}`,

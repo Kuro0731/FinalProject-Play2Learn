@@ -127,8 +127,6 @@ export default {
       this.correctGuesses = [];
     },
     async recordScore() {
-      // TODO: when Anagram Hunt finishes, make an Ajax call with axios (this.axios)
-      // to record the score on the backend
       const data = {
         "score": this.score,
         "settings": this.wordLength,

@@ -5,11 +5,12 @@
     <h2 class="text-center">Reviews</h2>
 </div>
 <div class="text-center">
-  <a class="btn btn-success btn-sm m-2" href="{% url 'reviews:create' %}">
+  <a class="btn btn-primary btn-sm m-2" href="{% url 'reviews:create' %}">
     + New Review
   </a>
 </div>
-<div class="table-responsive">
+{% if reviews %}
+<div class="table-responsive pb-5">
   <table class="table table-striped" style="min-width: 500px">
     <thead>
       <tr>
@@ -17,25 +18,25 @@
       </tr>
     </thead>
     <tbody>
-      {% for review in review_list %}
-      {% if review.user == user %}
-      <tr>
-        <td>
-          <a href="{{ review.get_absolute_url }}">{{ review.review }}</a>
-        </td>
-        <td>
-          <a href="{% url 'reviews:update' review.slug %}">
-            <i class="fas fa-pencil-alt"></i>
-          </a>
-          <a href="{% url 'reviews:delete' review.slug %}">
-            <i class="far fa-trash-alt"></i>
-          </a>
-        </td>
-      </tr>
-      {% endif %}
+      {% for review in reviews %}
+        <tr>
+          <td>
+            <a href="{{ review.get_absolute_url }}">{{ review.review }}</a>
+          </td>
+          <td>
+            <a href="{% url 'reviews:update' review.slug %}">
+              <i class="fas fa-pencil-alt"></i>
+            </a>
+            <a href="{% url 'reviews:delete' review.slug %}">
+              <i class="far fa-trash-alt"></i>
+            </a>
+          </td>
+        </tr>
       {% endfor %}
     </tbody>
   </table>
 </div>
-{% include 'includes/pagination.html' %}
+{% else %}
+<p class="text-center mt-5 fs-5">You haven't written any reviews yet.</p>
+{% endif %}
 {% endblock %}

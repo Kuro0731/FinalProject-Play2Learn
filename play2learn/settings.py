@@ -135,17 +135,16 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Optional settings
-SENDGRID_SANDBOX_MODE_IN_DEBUG = False  # Set to True to prevent sending emails in debug mode
-SENDGRID_ECHO_TO_STDOUT = True  # Set to True to echo email contents to the console in debug mode
+# Email settings for SendGrid
+EMAIL_BACKEND = 'sendgrid_backend.SendgridBackend'
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
 
-# Default email address used for various automated correspondence from the site
-DEFAULT_FROM_EMAIL = 'your-email@example.com'
+# Optional settings for SendGrid
+SENDGRID_SANDBOX_MODE_IN_DEBUG = False  # Set to True to avoid sending emails in DEBUG mode
+SENDGRID_ECHO_TO_STDOUT = True  # Set to True to output emails to the console (for debugging)
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+DEFAULT_FROM_EMAIL = 'woodcoty99@gmail.com'  # The default "from" email address
+ADMIN_EMAIL = 'woodcoty99@gmail.com'
 
 # Conditional import of local settings
 if os.environ.get('ENVIRONMENT') != 'production':

@@ -3,15 +3,14 @@
 {% block title %}Home{% endblock %}
 {% block main %}
   <h1 class="text-center mt-3 mb-3">Welcome!</h1>
-  <p class="text-center fs-5">Ready to to play some games?</p>
+  <p class="text-center fs-5">Ready to play some games?</p>
   <div class="mt-5 mb-5">
     {% if reviews %}
-    <div id="reviewCarousel" class="carousel slide-dark carousel-fade text-center" data-bs-ride="carousel" data-interval="10000">
+    <div id="reviewCarousel" class="carousel slide-dark carousel-fade text-center" data-bs-ride="carousel" data-bs-interval="10000">
       <div class="carousel-inner w-100">
         {% for review in reviews %}
         <div class="carousel-item {% if forloop.first %} active {% endif %}">
-          <div class="card border-primary m-auto mb-3 text-center"
-            style="max-width: 30rem">
+          <div class="card border-primary m-auto mb-3 text-center" style="max-width: 30rem">
             <div class="card-header"><em>Reviewed by: </em>{{ review.user }}</div>
             <div class="card-body">
               <h5 class="card-title">{{ review.title }}</h5>
@@ -21,6 +20,14 @@
         </div>
         {% endfor %}
       </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#reviewCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#reviewCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
     {% endif %}
   </div>
@@ -28,6 +35,6 @@
     {% if not user.is_authenticated %}
     <p class="text-center fs-5"><a href="{% url 'account_login' %}">Log In</a> or 
       <a href="{% url 'account_signup' %}">Sign Up</a> to track <em>your</em> scores!</p>
-  {% endif %}
+    {% endif %}
   </div>
 {% endblock %}

@@ -11,6 +11,7 @@ class Review(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.PROTECT,
         related_name='reviews'
     )
+    featured = models.BooleanField(default=False)  # Add this line
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     slug = models.SlugField(
@@ -25,5 +26,7 @@ class Review(models.Model):
             value = str(self)
             self.slug = unique_slug(value, type(self))
         super().save(*args, **kwargs)
+
     def __str__(self):
         return self.review
+
